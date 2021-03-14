@@ -75,3 +75,63 @@ Solution: Found
 
 ## The Fixed-point iteration method
 ### The algorithm
+
+A number <img src="https://render.githubusercontent.com/render/math?math=p"> is called a **fixed point** for a given function <img src="https://render.githubusercontent.com/render/math?math=f"> if <img src="https://render.githubusercontent.com/render/math?math=f(p) = p">.
+
+To approximate the fixed point of a function <img src="https://render.githubusercontent.com/render/math?math=f">, we choose a number <img src="https://render.githubusercontent.com/render/math?math=p_0"> as an initial approximation. Then, we generate the sequence <img src="https://render.githubusercontent.com/render/math?math=\{p_n\}_{n=0}^{\infty}"> by letting <img src="https://render.githubusercontent.com/render/math?math=p_n = f(p_{n - 1})">, for each <img src="https://render.githubusercontent.com/render/math?math=n \geq 1">. If the sequence converges to <img src="https://render.githubusercontent.com/render/math?math=p"> and <img src="https://render.githubusercontent.com/render/math?math=f"> is continuous, then
+
+<img src="https://latex.codecogs.com/png.latex?\small&space;p=\lim_{n&space;\to&space;\infty}p_n&space;=&space;\lim_{n&space;\to&space;\infty}&space;f(p_{n-1})&space;=&space;f(\lim_{n&space;\to&space;\infty}&space;p_{n-1})=f(p)">, and a solution to <img src="https://render.githubusercontent.com/render/math?math=x = f(x)"> is found.
+
+### The program usage
+
+The function `fixedPoint()` expect 4 parameters in the following order: an initial approximation <img src="https://render.githubusercontent.com/render/math?math=p_0">, a tolerance number <img src="https://render.githubusercontent.com/render/math?math=T">, the number of iterations, and the function <img src="https://render.githubusercontent.com/render/math?math=f(x)">. `fixedPoint()` returns the approximation number <img src="https://render.githubusercontent.com/render/math?math=p"> at each iteration and a message indicating whether or not the choice of <img src="https://render.githubusercontent.com/render/math?math=f(x)"> can be used in this approximation method.
+
+### Examples
+
+Given that the equation <img src="https://render.githubusercontent.com/render/math?math=x^3 %2B 4x^2 - 10"> has a unique root in <img src="https://render.githubusercontent.com/render/math?math=[1, 2]">, we can approximate the root in the following ways:
+**Option 1:** One obvious choice is we can tranfrom <img src="https://render.githubusercontent.com/render/math?math=x^3 %2B 4x^2 - 10"> into <img src="https://render.githubusercontent.com/render/math?math=x = f(x) = \frac{1}{2}(10-x^3)^{1/2}">. By choosing <img src="https://render.githubusercontent.com/render/math?math=p_0 = 1.5"> and <img src="https://render.githubusercontent.com/render/math?math=T = 0.0001"> for 30 iterations, we can write:
+
+```javascript
+fixedPoint(1.5, 0.0001, 30, (x) => {
+    return (1/2)*((10 - x*x*x)**(1/2));
+});
+```
+The output of this example can be formatted to display the results in the following way:
+
+```
+Fixed Point Method:
+p1 = 1.5
+p2 = 1.286953767623375
+p3 = 1.4025408035395783
+p4 = 1.3454583740232942
+p5 = 1.3751702528160383
+p6 = 1.360094192761733
+p7 = 1.3678469675921328
+p8 = 1.3638870038840212
+p9 = 1.36591673339004
+p10 = 1.364878217193677
+p11 = 1.365410061169957
+p12 = 1.3651378206692129
+p13 = 1.3652772085244786
+p14 = 1.3652058502970472
+Approximate solution: 1.3652058502970472
+Solution: Found
+```
+
+**Option 2:** <img src="https://render.githubusercontent.com/render/math?math=x^3 %2B 4x^2 - 10"> can also be transformed into <img src="https://render.githubusercontent.com/render/math?math=x = f(x) = \left( \frac{10}{x} - 4x \right)^{1/2}">. By choosing <img src="https://render.githubusercontent.com/render/math?math=p_0 = 1.5"> and <img src="https://render.githubusercontent.com/render/math?math=T = 0.0001"> for 30 iterations, we can write:
+
+```javascript
+fixedPoint(1.5, 0.0001, 30, (x) => {
+    return (10/x - 4*x)**(1/2);
+});
+```
+
+The output of this example can be formatted to display the results in the following way:
+
+```
+Fixed Point Method:
+p1 = 1.5
+p2 = 0.8164965809277263
+p3 = 2.99690880578722
+Solution: Method failed before 30 iterations.
+```
