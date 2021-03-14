@@ -45,31 +45,33 @@ The function `bisection()` expects 5 parameters in the following order: the numb
 
 ### Examples
 
-To find an approximate solution to <img src="https://render.githubusercontent.com/render/math?math=f(x) = x^2\sin(x)"> on the interval <img src="https://render.githubusercontent.com/render/math?math=[-0.9, 1]"> with tolerance <img src="https://render.githubusercontent.com/render/math?math=T = 0.0001"> for 15 iterations, we write:
+To find an approximate solution to <img src="https://render.githubusercontent.com/render/math?math=f(x) = x^3 %2B 4x^2 - 10"> on the interval <img src="https://render.githubusercontent.com/render/math?math=[1, 2]"> with tolerance <img src="https://render.githubusercontent.com/render/math?math=T = 0.0001"> for 15 iterations, we write:
 
 ```javascript
-bisection(-0.9, 1, 0.0001, 15, (x) => {
-  return x*x*Math.sin(x);
+bisection(1, 2, 0.0001, 15, (x) => {
+  return x*x*x + 4*x*x - 10;
 });
 ```
 The output of `bisection()` can be formatted to show the results in the following way:
 
 ```
-p1 = 0.04999999999999993
-p2 = -0.42500000000000004
-p3 = -0.18750000000000006
-p4 = -0.06875000000000006
-p5 = -0.009375000000000064
-p6 = 0.020312499999999935
-p7 = 0.0054687499999999355
-p8 = -0.001953125000000064
-p9 = 0.0017578124999999356
-p10 = -0.00009765625000006427
-p11 = 0.0008300781249999357
-p12 = 0.0003662109374999357
-p13 = 0.00013427734374993572
-p14 = 0.000018310546874935723
-p15 = -0.000039672851562564274
-Error: 0.000115966796875
+p1 = 1.5
+p2 = 1.25
+p3 = 1.375
+p4 = 1.3125
+p5 = 1.34375
+p6 = 1.359375
+p7 = 1.3671875
+p8 = 1.36328125
+p9 = 1.365234375
+p10 = 1.3642578125
+p11 = 1.36474609375
+p12 = 1.364990234375
+p13 = 1.3651123046875
+p14 = 1.36517333984375
+Error: 0.0001220703125
 Solution: Found
 ```
+
+## The Fixed-point iteration method
+### The algorithm
