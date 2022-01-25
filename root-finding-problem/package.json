@@ -1,0 +1,13 @@
+{
+  "name": "root-finding-problem",
+  "version": "1.0.0",
+  "description": "This program attempts to find a root (a solution) of an equation of the form <img src=\"https://render.githubusercontent.com/render/math?math=f(x) = 0\"> for any given function <img src=\"https://render.githubusercontent.com/render/math?math=f\"> by using three numerical analysis approximation methods. Those methods include:",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
